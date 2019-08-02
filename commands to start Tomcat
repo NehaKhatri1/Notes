@@ -1,0 +1,12 @@
+1. C:\Users\Neha>
+cd C:\Users\Neha\Downloads\apache-tomcat-7.0.75\bin
+
+2.  
+C:\Users\Neha\Downloads\apache-tomcat-7.0.75\bin>catalina.bat start
+
+2.5 C:\Users\Neha\Downloads\apache-tomcat-7.0.75\bin>
+set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_121
+ 3.
+C:\Users\Neha\Downloads\apache-tomcat-7.0.75\bin>catalina.bat start
+
+4. run http://localhost:8080/ & check .Tomcat should be run.
