@@ -1,0 +1,19 @@
+
+
+steps to create parent 
+1. create elastic beanstalk
+2. configure route53 (complete the right mapping of 4 parameters ns, soa(default), 2 alise mapping )
+3. load balance application to enable https connection
+4. create certificate in ACM
+5. add rule for https 443 in security group against ELASTIC BEANSTALk created... record
+6. add listener for https 443 in LOd balancer & upload certificateof parent
+
+
+steps to create child/subdomain 
+https://www.youtube.com/watch?v=nlff6mnmMeM 
+1. create elastic beanstalk
+2. configure route53 
+3. load balance application to enable https connection
+4. use certificate created in step 4 of parent
+5. add rule for https 443 in security group against ELASTIC BEANSTALk created... record
+6. add listener for https 443 in LOd balancer & upload certificateof parent

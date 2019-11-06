@@ -1,0 +1,331 @@
+--------------------------------------------------------------------------------------------------------------------
+Structure of a mavenised project 
+ 
+  under project 
+
+  -- src
+  -- target
+  --pom.xml 
+
+
+
+under src folder 
+ 
+ --- main 
+       --Java  ( under java folder packages of model, login,login.impl, webservice,db packages)
+       -- webapp
+              --css (not to be said)
+              --sql  (not to be said. hand made)
+               -.html  all files come in ths folder.
+              --WEB-INF
+                    -- claases
+                    --web.xml
+                    --applicationcontext.xml
+
+
+
+
+under target folder 
+ 
+   --target
+         --portal.war  (& folders like classes and portal-portal etc.)
+  
+
+
+
+how to deploy war file in tomcat 
+
+a. depoly war under webapp folder of tomcat then war start the tomcat server
+ using step b. once the tomcat starts it ll automatically create the (unpacks the war eacuse of this property <Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">)expanded vesion/folder of the war in the webapp folder. we can cross check it via running localhost :8080 on the browser.
+
+b. Tomcat start:--
+
+1.5 C:\Users\Neha\Downloads\apache-tomcat-7.0.75\bin>
+2. set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_121
+3. C:\Users\Neha\Downloads\apache-tomcat-7.0.75\bin>catalina.bat start
+
+------------------------------------------------------------------------------------------------
+
+
+URL component:-
+
+
+jQuery.ajax({
+    url: "http://localhost:8080/portal1/portal/login/getUserProfileDataForGuestUsers/"+EmailId,  
+
+
+localhost:8080  : tomcat instance/server running on this port
+portal1/     : warfile name 
+portal/      : servlet url mapping (uses web.xml file)
+login/       : webservice file name 
+getUserProfileDataForGuestUsers    : 
+                @GET
+		@Path("getUserProfileDataForGuestUsers/{EMAILID}")
+		public Response getUserProfileDataForGuestUsers(@PathParam("EMAILID") String EMAILID) {
+
+
+
+
+https://www.mkyong.com/webservices/jax-rs/jersey-spring-integration-example/
+https://www.mkyong.com/spring3/spring-3-hello-world-example/
+https://www.mkyong.com/spring/spring-auto-scanning-components/
+https://www.mkyong.com/webservices/jax-rs/jersey-hello-world-example/
+
+**********************************************************************************************
+ apache tomcat structure
+
+
+          --bin  (sstartup, shutdown , catalina(engine) related files)
+          --webapps (where we deploy our war)
+          --conf
+              -server.xml
+              -tomcat-users.xml
+              -web.xml
+              -context.xml
+
+
+
+
+
+1. server.xml - configuration related to engine, host, port, load balancing.
+
+<Engine name="Catalina" defaultHost="localhost">
+<!-- You should set jvmRoute to support load-balancing via AJP ie :
+    <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
+    -->
+<Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+
+
+
+2. web.xml  (it defines servlet, servlet mapping, Url matching etc. )
+    
+  <!-- ======================== Introduction ============================== -->
+  <!-- This document defines default values for *all* web applications      -->
+  <!-- loaded into this instance of Tomcat.  As each application is         -->
+  <!-- deployed, this file is processed, followed by the                    -->
+  <!-- "/WEB-INF/web.xml" deployment descriptor from your own               -->
+  <!-- applications.                                                        -->
+  <!--                                                                      -->
+  <!-- WARNING:  Do not configure application-specific resources here!      -->
+  <!-- They should go in the "/WEB-INF/web.xml" file in your application.   -->
+
+
+  <!-- ================== Built In Servlet Definitions ==================== -->
+
+
+  <!-- The default servlet for all web applications, that serves static     -->
+  <!-- resources.  It processes all requests that are not mapped to other   -->
+  <!-- servlets with servlet mappings (defined either here or in your own   -->
+  <!-- web.xml file).  This servlet supports the following initialization   -->
+  <!-- parameters (default values are in square brackets):                  -->
+  <!--     
+
+
+debug               Debugging detail level for messages logged     -->
+  <!--                       by this servlet. Useful values are 0, 1, and   -->
+  <!--                       11 where higher values mean more detail. [0]   -->
+  <!--                                                                      -->
+  <!--   fileEncoding        Encoding to be used to read static resources   -->
+  <!--                       [platform default]                             -->
+  <!--                                                                      -->
+  <!--   input               Input buffer size (in bytes) when reading      -->
+  <!--                       resources to be served.  [2048] 
+
+
+
+ <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>listings</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+
+
+MY APPLICATION SPECIFIC SERVLET
+
+   <servlet>
+                <servlet-name>jersey-serlvet</servlet-name>
+                <servlet-class>
+                        com.sun.jersey.spi.spring.container.servlet.SpringServlet
+                </servlet-class>
+                <init-param>
+                        <param-name>
+                                 com.sun.jersey.config.property.packages
+                        </param-name>
+                        <param-value>com.thb.webservice.rest</param-value>
+                </init-param>
+                <load-on-startup>1</load-on-startup>
+        </servlet>
+
+ 
+
+  <!-- The JSP page compiler and execution servlet, which is the mechanism  -->
+  <!-- used by Tomcat to support JSP pages.  Traditionally, this servlet    -->
+  <!-- is mapped to the URL pattern "*.jsp". 
+
+ <!-- Common Gateway Includes (CGI) processing servlet, which supports     -->
+  <!-- execution of external applications that conform to the CGI spec      -->
+  <!-- requirements.  Typically, this servlet is mapped to the URL pattern  -->
+  <!-- "/cgi-bin/*", which means that any CGI applications that are         -->
+  <!-- executed must be present within the web application. 
+
+
+
+
+3. Context.xml 
+
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+
+</Context>      
+
+
+
+                                                           -->
+******************************************************************************************************
+
+
+
+JAX-RS is an specification and Jersey is a JAX-RS implementation.- True
+This can be understood relating it to OOPS principles JAX-RS is an Interface and Jersey is a class implementing that interface.
+These Specification creates a STANDARD for developing and using the web services.
+
+
+Using JAX-RS alone can not implement REST, need to register Jersey as the servlet dispatcher for REST requests on web.xml
+
+
+
+Spring Auto scanning components
+By mkyong | March 24, 2010 | Updated : June 13, 2011 | Viewed : 689,703 | +842 pv/w
+Normally you declare all the beans or components in XML bean configuration file, so that Spring container can detect and register your beans or components. Actually, Spring is able to auto scan, detect and instantiate your beans from pre-defined project package, no more tedious beans declaration in in XML file.
+
+
+  In JAX-RS, you can use @Path to bind URI pattern to a Java method.
+
+JAX-RS @Path URI matching 
+
+In JAX-RS, you can use @Path to bind URI pattern to a Java method.
+1. Normal URI Matching
+See normal URI matching with @Path annotation.
+
+
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
+@Path("/users")
+public class UserRestService {
+
+	@GET
+	public Response getUser() {
+
+		return Response.status(200).entity("getUser is called").build();
+
+	}
+
+	@GET
+	@Path("/vip")
+	public Response getUserVIP() {
+
+		return Response.status(200).entity("getUserVIP is called").build();
+
+	}
+}
+
+
+URI pattern : “/users”
+
+getUser is called
+Copy
+URI pattern : “/users/vip”
+
+getUserVIP is called
+
+
+
+
+
+2. URI Matching and Parameter
+The value within an open brace “{” and close brace “}”, is represents a parameter, and can be access with @PathParam.
+
+
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
+
+@Path("/users")
+public class UserRestService {
+
+	@GET
+	@Path("{name}")
+	public Response getUserByName(@PathParam("name") String name) {
+
+		return Response.status(200)
+			.entity("getUserByName is called, name : " + name).build();
+
+	}
+
+}
+
+
+URI Pattern : “/users/mkyong”
+
+getUserByName is called, name : mkyong
+Copy
+URI Pattern : “/users/abcdefg”
+
+getUserByName is called, name : abcdefg
+
+
+
+
+      
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
+ui calls(ajax call) 
+||
+RegisterUserService(rsetful)splits data 
+||
+calls RegisterUserImpl(defination of methods, restful api calls this ,connects to db & inserts/retrives data via queries. )
+||
+returns to ui in the form of msg or data.
+
+
+
+structure of ui
+
+<html>
+<head>
+<style>
+ -----css----
+</style>
+
+<script>/
+-----javascript/jquery-------
+</script>
+
+</head>
+<body>
+------HTML codes (div.)-------
+</body>
+</html>
+
+
+
+

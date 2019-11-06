@@ -1,0 +1,5 @@
+Aparnesh,01,9798564789;Programming#Core_Java&4-Mapreduce&4-Machine_Learning&3
+Neha,02,8800236796;Programming#Core_Java&3-Mapreduce&4-Machine_Learning&1
+Anku,03,774564444;Programming#Core_Java&4-Mapreduce&3-Machine_Learning&1
+Rani,04,6666668238;Literature#Zoology&4-Hindi&4-English&3
+Yashu,05,999999999;All#Maths&3-English&2-Science&3

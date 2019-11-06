@@ -1,0 +1,45 @@
+
+
+https://www.atlassian.com/agile/project-management
+
+
+
+What is agile project management?
+Software teams have been embracing agile project management methodologies for nearly a decade, increasing their speed, collaboration, and ability to respond to market trends.
+
+
+
+
+
+
+
+
+
+Agile tools for scrum
+Scrum is an agile methodology where products are built in a series of fixed-length iterations. There are four pillars that bring structure to this framework: sprint planning, stand ups (also called daily scrums), sprints, and retrospectives. Out-of-the-box, Jira Software comes with a comprehensive set of agile tools that help your scrum team perform these events with ease.
+
+s
+
+
+
+
+History
+Agile project management is an iterative approach to managing software development projects that focuses on continuous releases and incorporating customer feedback with every iteration.
+
+Stemming from Toyota's lean manufacturing concept of the 1940s, software development teams have embraced agile methodologies to reduce waste and increase transparency while quickly addressing their customers' ever-changing needs. A stark change from waterfall project management that focuses on "big bang" launches, agile helps software teams collaborate better and innovate faster than ever before. 
+
+Traditional agile project management can be categorized into two frameworks: scrum and kanban. While scrum is focused on fixed-length project iterations, kanban is focused on continuous releases. Upon completion, the team immediately moves on to the next. 
+
+How scrum works
+Scrum is a framework for agile project management that uses fixed-length iterations of work, called sprints. There are four ceremonies that bring structure to each sprint.
+
+It all starts with the backlog, or body of work that needs to be done. In scrum, there are two backlogs: one is the product backlog (owned by the product owner) which is a prioritized list of features, and the other is the sprint backlog which is filled by taking issues from the top of the product backlog until the capacity for the next sprint is reached. Scrum teams have unique roles specific to their stake in the process. Typically there's a scrum master, or champion of the scrum method for the team; the product owner, who's the voice of the product; and the scrum team, who are often cross-functional team members in charge of getting s@#$ done.
+
+The four ceremonies of scrum
+Sprint Planning	Sprint Demo	Daily Standup	Retrospective
+A team planning meeting that determines what to complete in the coming sprint.	A sharing meeting where the team shows what they've shipped in that sprint.	Also known as a stand-up, a 15-minute mini-meeting for the software team to sync.	A review of what did and didn't go well with actions to make the next sprint better.
+ 
+
+Scrum board example | Atlassian agile coach
+The scrum board
+A scrum board is used to visualize all the work in a given sprint. During the sprint planning meeting, the team moves items from the product backlog into the sprint backlog. Scrum boards can have multiple steps visible in the workflow, like To Do, In Progress, and Done. Scrum boards are the key component for increasing transparency in agile project management.

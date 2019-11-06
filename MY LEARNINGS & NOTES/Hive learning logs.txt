@@ -1,0 +1,84 @@
+   
+understanding partitioning & Bucketing 
+
+
+   
+
+  1. create a table schema lets say employee 
+
+internal
+
+create  table employee(name String,city string,empid int,year string,month string,day string);
+
+or external
+
+
+create external table employee(name String,city string,empid int,year string,month string,day string);
+Location '/user/neha/external table';
+
+
+ 
+  2. load data into that table from a text file 
+
+
+   Load data inpath '/user/neha/data.txt' into table employee;
+
+
+
+
+ 
+3. cretae  a different table schema which u want to partition & or bucketized
+
+     create table emp_par_buck (name string,city string,empid string)
+      partitioned by (year string,month string,day string)
+      clustered by (empid) into 256 buckets;
+
+
+4. load the data in part/bucketized table from the source table
+
+
+   insert overwrite into table emp_par_buck partition(year string,month string,day string) select * from employee;
+
+
+
+Note :--watch the columns carefully in case of partitioning. 
+
+for bucketing set hive.enforce.bucketing= true;
+
+fr partitioning set hive.exec.dynamic.partition.mode=nonstrict
+
+
+
+
+   Show partitions emp-par-buck;
+ y=2025/m=12/d=3   under  user/hive/warehouse/y=........
+        
+
+     to see  buckets dfs -ls /user/hive/warehouse/emp_par_buck/000000_0
+
+
+
+ dynamic partitioning   
+
+ in the above step 4 
+
+insert overwrite into table emp_par_buck partition(dt)select name,city,empid,year...,dt from employee;
+
+
+Enable dynamic partitioning in Hive:
+SET hive.exec.dynamic.partition = true;
+SET hive.exec.dynamic.partition.mode = nonstrict;
+
+
+. What is dynamic partitioning and when is it used?
+In dynamic partitioning values for partition columns are known in the runtime, i.e. It is known during loading of the data into a Hive table. 
+One may use dynamic partition in following two cases:
+Loading data from an existing non-partitioned table to improve the sampling and therefore, decrease the query latency. 
+When one does not know all the values of the partitions before hand and therefore, finding these partition values manually from a huge data sets is a tedious task.
+
+
+
+
+ 
+
+

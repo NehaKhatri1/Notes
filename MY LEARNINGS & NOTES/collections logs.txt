@@ -1,0 +1,64 @@
+
+
+
+  1. arraylist add() & get(i)  with the arraylist ,the elements are kept in the order in which they were inserted into the list.
+
+
+  2. map   put() & get()  returns the value by key keyset().toArray()[i] returns the setof keys. 
+
+
+  3. The sort() method can take only lists of comparable objects. So any class wants to sort its collection ( like class song ArrayList<Song>  songlist ) needs to implement comparable interface.
+
+   Public interface comparable<T> {
+      Int compareTo(T o)
+}
+
+  method 
+    Public int compareTo(Song s)
+{
+     return title.compareTo(s.getTitle())
+}                                                                                                                                                             
+
+
+
+
+method 
+pblic interface comparator<T>
+{
+ int compare(T 01, T 02)
+}     
+
+
+
+
+
+Why do we need Comparator when we Already have Comparable??
+
+If you want to have more than one way of sorting your class, you must implement Comparator.
+     
+
+
+
+    Learning on sorting of collections 
+
+
+    a. to sort lists (both linkedlist() & arraylist() )  : u have collection.sort(List list)  
+
+    b. to sort set :  we have treeset   (no sortedSort becasue its an Interface not implementation classes & no                                           collection.sort because it only accepts list.)
+    
+    c. to sort map : we have treemap   (no sortedMap becasue its an Interface not implementation classes & no                                           collection.sort because it only accepts list.)
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                      

@@ -1,0 +1,161 @@
+
+hadoop Commands 
+
+
+1. hdfs dfs -put /home/dataflair/Desktop/sample /user/dataflair/dir1
+
+   ex:-
+     hdfs dfs -put /home/training/workspace/wordcount/src/WordCount.java  /usr/src/neha_programs
+
+
+for hadoop my code dir will be under /user/{user name(which is usually cloudera or training in my case)}
+put something in your dir. & test if u r able to see it using command hadoop fs -ls /user/training.
+
+one time process dump(include) all client lib into your dev/run dir.
+ hadoop fs -put /usr/lib/hadoop/client/ /user/training/client_jars
+
+
+ 3. hadoop fs -cat /user/training/Word_Count_Input_Data 
+    hadoop fs -cat /user/training/Output_Dir1/part-r-00000
+
+ 4.  hadoop fs -put /home/training/Word_Count_Input_Data /user/training
+
+
+5. hadoop fs -ls /user/training
+
+6. hadoop fs -chmod 777 /user/training
+
+
+ 
+
+To run hadop job(keep in mind jar should be stored on local disk)
+ 
+7. hadoop jar /home/training/WCount.jar com.job.wordcount.WordCount /user/training/Word_Count_Input_Data /user/training/Output_Dir1
+
+
+8. deleting a HDFS dir 
+  hadoop fs -rm -r /user/training/client_jars
+
+9. deleting a hdfs file 
+hadoop fs -rm /user/training/wcount.jar
+
+
+10. move data 
+ hadoop fs -mv /user/training/Word_Count_Input_Data /user/training/wordcount/Word_Count_Input_Data
+
+
+11. To view history of a job 
+  1. using web UI  http://localhost:50030/jobhistory.jsp
+ 2.  or hadoop job -history jobid on command line 
+3. or in file system I can see the logs directory in /var/log/
+
+
+
+12. To check if hadoop is runnning in standalone/pseduo-distributed-mode/fully-distributed-mode check below path(in /etc) & settngs 
+
+/etc/hadoop/conf
+
+
+
+
+
+linux commands 
+
+1. to create a file 
+      Type cat > filename.txt into Terminal.
+
+2. username@Host 
+
+3. file  permissions 
+  rwx for owner group others 
+
+4. to delete a dir 
+
+sudo rm -rf dirname
+
+
+ 
+
+hive commands 
+
+(lets find maxtemp per year by using hive commands from step 2 to 4 )
+
+1. show tables;
+
+2.create a table & load data into table 
+
+hive> Create table records (year STRING,temperature INT,quality INT)
+    > ROW FORMAT DELIMITED
+    > FIELDS TERMINATED BY '/t'
+    >LINES TERMINATED BY '\n'; 
+OK
+
+
+2.5 run select command to check  if loaded file's format is correct(should not contain any null values)
+
+ select * from records;
+
+
+3. check if the file is present in warehouse(all tables in hive gets automatically saved in warehouse dir.)
+
+hadoop fs -cat /user/hive/warehouse/records/
+
+
+4. run the query now
+ 
+select year,MAX(temperature)from records where temperature!=9999 Group by year;
+
+
+5. hive --hiveconf hive.root.logger=DEBUG,console
+
+conf dir (to check hive-site.xml & hive-default.xml)
+6.  ls /etc/hive/conf
+
+7. check logs under /tmp/{user_name}/
+
+
+8.  
+
+4 read (r)
+2 write (w)
+1 execute (x)
+
+
+9. grep 2014 Max_Temp_Input_Data
+2014 14
+2014 12
+2014 11
+2014 12
+
+https://www.howtoforge.com/tutorial/linux-grep-command/
+
+
+
+
+
+
+git command (for linux command line )
+
+1. to install github on linux 
+
+    sudo apt -get install git
+
+2.   create Git hub account(www.github.com)
+3.   make new repository using account(UI)
+4.   create dir in your home folder (linux)
+5.  configure username & password using below commands :-
+
+         git config --global user.name "NehaKhatri1"
+         git config --global user.email "Hado...."
+
+
+echo "# linux-code" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/NehaKhatri1/linux-code.git
+git push -u origin master
+
+
+
+

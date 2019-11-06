@@ -1,0 +1,115 @@
+
+
+
+follow this tutorial 
+https://www.thegeekstuff.com/2017/06/java-8-jre-jdk-install/  
+
+eclipse-standard-kepler-SR2-Java8-linux-gtk-x86_64.tar.gz
+
+
+In case of this error ((can't create transaction lock on /var/lib/rpm/.rpm.lock (Permission denied)
+
+ sudo rpm -ivh yum.3.2.0-40-el6.centos.noarch.rpm
+Run  echo $JAVA_HOME  & find the java path .  
+
+sudo update-alternatives --config java   then& done 
+
+https://aboullaite.me/switching-between-java-versions-on-ubuntu-linux/  
+
+
+
+
+
+https://docs.opsgenie.com/docs/setting-java_home 
+
+
+
+
+create a project in eclipse 
+In The build path ,change the JRE library to jdk1.8 
+then in build path itself ,go to properties  > complier ,change it to 1.8 . 
+
+
+
+
+To make IDE compatible for 1.8 , i had to change the ide (from luno to java 8 Kepler )
+Tutorials which helped me in this work are as follows. (there were few issues involved)
+
+https://www.itzgeek.com/how-tos/linux/centos-how-tos/install-eclipse-4-4-luna-ide-on-centos-7-rhel-7.html  
+https://askubuntu.com/questions/63665/why-cant-i-launch-eclipse-from-a-terminal-or-run-it-via-gmrun 
+https://stackoverflow.com/questions/4898508/bash-eclipse-cannot-execute-binary-file
+
+
+https://www.eclipse.org/downloads/packages/release/kepler/sr2-java8-patches
+
+
+
+Java 8 
+
+If you’re new to Spark, JavaRDD is a distributed collection of objects, in this case lines of text in a file.
+
+JavaRDD lines = in this case lines of text in a file.
+
+JavaRDD lines = sc.textFile("hdfs://log.txt");
+
+
+
+Java 7 word count:
+
+JavaRDD lines = sc.textFile("hdfs://log.txt");
+
+// Map each line to multiple words
+JavaRDD words = lines.flatMap(
+  new FlatMapFunction() {
+    public Iterable call(String line) {
+      return Arrays.asList(line.split(" "));
+    }
+});
+
+// Turn the words into (word, 1) pairs
+JavaPairRDD ones = words.mapToPair(
+  new PairFunction() {
+    public Tuple2 call(String w) {
+      return new Tuple2(w, 1);
+    }
+});
+
+// Group up and add the pairs by key to produce counts
+JavaPairRDD counts = ones.reduceByKey(
+  new Function2() {
+    public Integer call(Integer i1, Integer i2) {
+      return i1 + i2;
+    }
+});
+
+counts.saveAsTextFile("hdfs://counts.txt");
+
+
+
+
+With Java 8, we can write this program in just a few lines:
+
+Java 8 word count:
+
+to convert line ---> words use flatmap()/map()
+to convert word (hello) into key value (hello,1) use mapToPair()
+
+
+JavaRDD lines = sc.textFile("hdfs://log.txt");
+JavaRDD words =
+    lines.flatMap(line -> Arrays.asList(line.split(" ")));
+JavaPairRDD counts =
+    words.mapToPair(w -> new Tuple2(w, 1))
+         .reduceByKey((x, y) -> x + y);
+counts.saveAsTextFile("hdfs://counts.txt");
+
+
+
+
+
+
+
+
+
+
+

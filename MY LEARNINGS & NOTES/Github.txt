@@ -1,0 +1,59 @@
+
+
+ first commit 
+
+pwd
+   22  cd Desktop
+   23  pwd
+   24  git clone https://github.com/NehaKhatri1/MapReduceWordCount.git
+   25  cd MapReduceWordCount
+   26   pwd
+   27  git status
+   28  git add .
+   29  git commit -m "first"
+   30  git status
+   31  git add .
+   32  git commit -m "first"
+   33  git push origin master
+
+
+
+
+
+
+
+  git rev-parse --show-toplevel           Show the absolute path of the top-level directory.
+
+
+git rev-parse --git-dir
+That would give the path of the .git directory.
+
+
+
+Github12345
+
+
+
+
+ remote set-url origin https://Nehakhatri1:Github12345@github.com/user/rep
+
+
+
+ git remote -v
+
+
+  Go to that directory  [cloudera@quickstart MapReduceWordCount]$ where u want to commit your code 
+
+ 1. git add ben
+ 2. git commit -m "my new"
+   
+ [master f30744c] my new
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+ create mode 100644 ben
+
+3. git remote add origin git@github.com:NehaKhatri1/MapReduceWordCount.git
+      fatal: remote origin already exists.
+
+4. 
+
+git remote set-url origin https://username:userpwd@github.com/user/repo.git

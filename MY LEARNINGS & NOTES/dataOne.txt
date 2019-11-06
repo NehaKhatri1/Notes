@@ -1,0 +1,2 @@
+neha,neha123#sbi-100;ubi-1000;citi-10000
+aparnesh,aparnesh123#sbi-101;ubi-5000;citi-9000

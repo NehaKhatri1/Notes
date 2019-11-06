@@ -1,0 +1,9 @@
+
+
+Sorting in SQL & HIve 
+
+sql :-  sql has one sorting function ORDERBY nameofthe column()  . no sort by ()  ASC or DESC;
+Hive :- hive has order by() , sot by(), distirbute by() , cluster by().
+
+
+
